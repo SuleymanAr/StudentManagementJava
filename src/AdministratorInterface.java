@@ -106,9 +106,15 @@ public class AdministratorInterface {
 	            if (foundCourse.isStudentEnrolled(foundStudent)) { //if the student is already enrolled in that course do nothing, else enroll them.
 	                System.out.println(foundStudent.getName() + " is already enrolled in " + foundCourse.getName());
 	            } else {
-	                foundCourse.enrollStudent(foundStudent);
-	                foundStudent.getCourses().add(foundCourse);
-	                System.out.println(foundStudent.getName() + " was assigned to " + foundCourse.getName());
+	            	if(foundCourse.getMaxCapacity()>foundCourse.getTotalEnrolledStudents()) {
+		                foundCourse.enrollStudent(foundStudent);
+		                foundStudent.getCourses().add(foundCourse);
+		                System.out.println(foundStudent.getName() + " was assigned to " + foundCourse.getName());
+	            	}
+	            	else
+	            	{
+	            		 System.out.println("Course " + foundCourse.getName() + " has reached its maximum capacity.");
+	            	}
 	            }
 	        } else {
 	            System.out.println("No Course Found With That Code...");
