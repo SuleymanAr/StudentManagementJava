@@ -51,7 +51,7 @@ public class CourseManagement {
 
     public static Course getCourseByCode(String courseCode) {
         for (Course course : courses) {
-            if (course.getCourseCode().equalsIgnoreCase(courseCode)) {
+            if (course.getCourseCode().equals(courseCode)) {
                 return course; 
             }
         }
